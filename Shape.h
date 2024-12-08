@@ -9,6 +9,8 @@
 
 class Shape {
 public:
+	virtual ~Shape() = default;
+
 	virtual double getArea() const = 0;
 	virtual FrameRectangle getFrameRectangle() const = 0;
 	virtual void moveToPoint(Point pos) = 0;
