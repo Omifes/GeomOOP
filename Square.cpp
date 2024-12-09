@@ -33,3 +33,15 @@ Square* Square::clone() const {
 string Square::getName() const {
 	cout << "Square\n";
 }
+
+istream& operator>>(istream& stream, Square& element) {
+	double x, y, s;
+	stream >> x >> y >> s;
+	element.setPos(x, y);
+	element.setSide(s);
+	return stream;
+}
+
+ostream& operator<<(ostream& stream, Square& element) {
+	stream << ""
+}

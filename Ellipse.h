@@ -10,6 +10,9 @@
 using namespace std;
 
 class Ellipse : public Shape {
+
+	friend istream& operator>>(istream& stream, Ellipse& element);
+
 private:
 	Point pos_;
 	double radiusVert_, radiusHor_;
@@ -32,5 +35,8 @@ public:
 	void scale(double k) override;
 	Ellipse* clone() const override;
 	string getName() const override;
+
+	
+	
 };
 #endif // ELLIPSE_H

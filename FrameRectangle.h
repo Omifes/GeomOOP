@@ -2,8 +2,14 @@
 #define FRAMERECTANGLE_H
 
 #include "Point.h"
+#include <iostream>
+
+using namespace std;
 
 class FrameRectangle {
+
+	friend ostream& operator<<(ostream& stream, const FrameRectangle element);
+
 private:
 	Point pos_;
 	int hight_, wight_;
@@ -19,5 +25,12 @@ public:
 	double getWight() { return wight_; }
 	double getHight() { return hight_; }
 };
+
+ostream& operator<<(ostream& stream, FrameRectangle element) {
+	stream << "Ограничивающий прямоугольник:\n";
+	stream << "Центр: (" << pos_.getX() << "," << pos_.getY() << ")\n" 
+		   << "Ширина: " << element.getWight() << "\nВысота: " << element.getHight() << '\n';
+	return stream;
+}
 
 #endif // FRAMERECTANGLE_H

@@ -34,3 +34,12 @@ Ellipse* Ellipse::clone() const {
 string Ellipse::getName() const {
 	cout << "Ellipse\n";
 }
+
+istream& operator>>(istream& stream, Ellipse& element) {
+	double x, y, v, h;
+	stream >> x >> y >> v >> h;
+	element.setPos(x, y);
+	element.setRadVert(v);
+	element.setRadHor(h);
+	return stream;
+}
