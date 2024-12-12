@@ -2,35 +2,30 @@
 #define FRAMERECTANGLE_H
 
 #include "Point.h"
-#include <iostream>
-
-using namespace std;
 
 class FrameRectangle {
-
-	friend ostream& operator<<(ostream& stream, const FrameRectangle element);
-
 private:
-	Point pos_;
-	int hight_, wight_;
+    Point pos_;
+    double height_, width_;
+
 public:
-	FrameRectangle() : pos_(0, 0), hight_(0), wight_(0) {}
-	FrameRectangle(int x, int y, int h, int w) : pos_(x, y), hight_(h), wight_(w) {}
+    FrameRectangle() : pos_(0, 0), height_(0), width_(0) {}
+    FrameRectangle(double x, double y, double h, double w) : pos_(x, y), height_(h), width_(w) {}
 
-	void setPos(int x, int y) { pos_.setX(x); pos_.setY(y); }
-	void setHight(int h) { hight_ = h; }
-	void setWight(int w) { wight_ = w; }
+    void setPos(double x, double y) { pos_.setX(x); pos_.setY(y); }
+    void setHeight(double h) { height_ = h; }
+    void setWidth(double w) { width_ = w; }
 
-	Point getPos() { return pos_; }
-	double getWight() { return wight_; }
-	double getHight() { return hight_; }
+    Point getPos() const { return pos_; }
+    double getWidth() const { return width_; }
+    double getHeight() const { return height_; }
+
+    Point getBottomLeft() const {
+        return Point(pos_.getX() - width_ / 2, pos_.getY() - height_ / 2);
+    }
+    Point getTopRight() const {
+        return Point(pos_.getX() + width_ / 2, pos_.getY() + height_ / 2);
+    }
 };
-
-ostream& operator<<(ostream& stream, FrameRectangle element) {
-	stream << "Ограничивающий прямоугольник:\n";
-	stream << "Центр: (" << pos_.getX() << "," << pos_.getY() << ")\n" 
-		   << "Ширина: " << element.getWight() << "\nВысота: " << element.getHight() << '\n';
-	return stream;
-}
 
 #endif // FRAMERECTANGLE_H

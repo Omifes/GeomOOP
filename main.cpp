@@ -1,24 +1,33 @@
 ﻿#include <iostream>
+#include <vector>
+#include <memory>
 #include "Square.h"
 #include "Ellipse.h"
 
 using namespace std;
 
 int main() {
+    setlocale(LC_ALL, "Russian");
+    vector<unique_ptr<Shape>> shapes;
 
-	setlocale(LC_ALL, "Russian");
+    
+    unique_ptr<Shape> ellipse = make_unique<Ellipse>();
+    unique_ptr<Shape> square = make_unique<Square>();
 
-	Ellipse kryg;
-	Square kvad;
-	cin >> kryg;
-	cin >> kvad;
+    
+    cout << "Введите данные для эллипса (x y радиус_вертикальный радиус_горизонтальный): ";
+    cin >> dynamic_cast<Ellipse&>(*ellipse);
 
-	cout << "getArea\n";
-	cout << kryg.getArea() << '\n' << kvad.getArea() << '\n';
-	
-	cout << "getFrameRectangle\n";
-	cout << kryg.getFrameRectangle() << '\n' << kvad.getFrameRectangle() << '\n';
+    cout << "Введите данные для квадрата (x y сторона): ";
+    cin >> dynamic_cast<Square&>(*square);
 
-	cout << "moveToPoint("
+    shapes.push_back(move(ellipse));
+    shapes.push_back(move(square));
 
+    cout << "\nИнформация о фигурах:\n";
+    for (const auto& shape : shapes) {
+        cout << *shape << endl;
+    }
+
+    return 0;
 }

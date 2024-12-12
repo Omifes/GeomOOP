@@ -3,16 +3,17 @@
 
 class Point {
 private:
-    int x_, y_;
+    double x_, y_;
 
 public:
-    Point(int x = 0, int y = 0) : x_(x), y_(y) {}
+    Point() : x_(0.0), y_(0.0) {}
+    Point(double x, double y) : x_(x), y_(y) {}
 
-    int getX() const { return x_; }
-    int getY() const { return y_; }
+    double getX() const { return x_; }
+    double getY() const { return y_; }
 
-    void setX(int x) { x_ = x; }
-    void setY(int y) { y_ = y; }
+    void setX(double x) { x_ = x; }
+    void setY(double y) { y_ = y; }
 };
 
 #endif // POINT_H

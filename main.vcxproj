@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Ellipse.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -2,40 +2,48 @@
 #define SQUARE_H
 
 #include "Point.h"
-#include "FrameRectangle.h" 
+#include "FrameRectangle.h"
 #include "Shape.h"
 #include <string>
 #include <iostream>
-
-using namespace std;
+#include <iomanip>
 
 class Square : public Shape {
-
-	friend istream& operator>>(istream& stream, Square& element);
-	friend ostream& operator<<(ostream& stream, Square& element);
+    friend istream& operator>>(istream& stream, Square& element);
+    friend ostream& operator<<(ostream& stream, const Square& element);
 
 private:
-	Point pos_;
-	double side_;
+    Point pos_;
+    double side_;
+
 public:
-	Square() : pos_(0, 0), side_(0) {}
-	Square(double x, double y, double s) : pos_(x, y), side_(s) {}
+    // Конструкторы
+    Square(); // Конструктор по умолчанию
+    Square(double x, double y, double s); // Конструктор с параметрами
 
-	void setPos(double x, double y) { pos_.setX(x); pos_.setY(y); }
-	void setSide(double v) { side_ = v; }
+    // Сеттеры
+    void setPos(double x, double y);
+    void setSide(double v);
 
-	Point getPos() { return pos_; }
-	double getSide() { return side_; }
+    // Геттеры
+    Point getPos() const;
+    double getSide() const;
 
-	double getArea() const override;
-	FrameRectangle getFrameRectangle() const override;
-	void moveToPoint(Point pos) override;
-	void moveToPoint(double k) override;
-	void scale(double k) override;
-	Square* clone() const override;
-	string getName() const override;
+    // Переопределенные методы из базового класса Shape
+    double getArea() const override;
+    FrameRectangle getFrameRectangle() const override;
 
-	
+    void moveToPoint(Point pos) override;
+    void moveToPoint(double k) override;
+    void scale(double k) override;
+
+    Shape* clone() const override; // Изменено на Shape*
+    string getName() const override;
+
+    void print(ostream& os) const override { // Реализация метода print
+        os << *this;
+    }
 };
 
 #endif // SQUARE_H
+
