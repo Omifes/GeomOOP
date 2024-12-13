@@ -17,19 +17,15 @@ private:
     double side_;
 
 public:
-    // Конструкторы
-    Square(); // Конструктор по умолчанию
-    Square(double x, double y, double s); // Конструктор с параметрами
+    Square() : pos_(0.0, 0.0), side_(0.0) {}
+    Square(double x, double y, double s) : pos_(x, y), side_(s) {}
 
-    // Сеттеры
-    void setPos(double x, double y);
-    void setSide(double v);
+    void setPos(double x, double y) { pos_.setX(x); pos_.setY(y); }
+    void setSide(double v) { side_ = v; }
 
-    // Геттеры
-    Point getPos() const;
-    double getSide() const;
+    Point getPos() const { return pos_; }
+    double getSide() const { return side_; }
 
-    // Переопределенные методы из базового класса Shape
     double getArea() const override;
     FrameRectangle getFrameRectangle() const override;
 
@@ -37,10 +33,10 @@ public:
     void moveToPoint(double k) override;
     void scale(double k) override;
 
-    Shape* clone() const override; // Изменено на Shape*
+    Shape* clone() const override;
     string getName() const override;
 
-    void print(ostream& os) const override { // Реализация метода print
+    void print(ostream& os) const override {
         os << *this;
     }
 };

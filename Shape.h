@@ -24,7 +24,6 @@ public:
     virtual void print(ostream& os) const = 0;
 };
 
-// ѕерегрузка оператора вывода дл€ базового класса Shape (только объ€вление)
 ostream& operator<<(ostream& os, const Shape& shape);
 
 #endif // SHAPE_H

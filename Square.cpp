@@ -1,27 +1,6 @@
 #include "Square.h"
 #include <cmath>
 
-Square::Square() : pos_(0.0, 0.0), side_(0.0) {}
-
-Square::Square(double x, double y, double s) : pos_(x, y), side_(s) {}
-
-void Square::setPos(double x, double y) {
-    pos_.setX(x);
-    pos_.setY(y);
-}
-
-void Square::setSide(double v) {
-    side_ = v;
-}
-
-Point Square::getPos() const {
-    return pos_;
-}
-
-double Square::getSide() const {
-    return side_;
-}
-
 double Square::getArea() const {
     return pow(side_, 2);
 }

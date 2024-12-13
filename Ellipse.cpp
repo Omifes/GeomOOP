@@ -1,36 +1,6 @@
 #include "Ellipse.h"
-#include <cmath>
 
 const double PI = 3.14159265358979323846;
-
-Ellipse::Ellipse() : pos_(0.0, 0.0), radiusVert_(0.0), radiusHor_(0.0) {}
-
-Ellipse::Ellipse(double x, double y, double v, double h) : pos_(x, y), radiusVert_(v), radiusHor_(h) {}
-
-void Ellipse::setPos(double x, double y) {
-    pos_.setX(x);
-    pos_.setY(y);
-}
-
-void Ellipse::setRadVert(double v) {
-    radiusVert_ = v;
-}
-
-void Ellipse::setRadHor(double h) {
-    radiusHor_ = h;
-}
-
-Point Ellipse::getPos() const {
-    return pos_;
-}
-
-double Ellipse::getRadVert() const {
-    return radiusVert_;
-}
-
-double Ellipse::getRadHor() const {
-    return radiusHor_;
-}
 
 double Ellipse::getArea() const {
     return PI * radiusVert_ * radiusHor_;
@@ -55,7 +25,7 @@ void Ellipse::scale(double k) {
     radiusHor_ *= k;
 }
 
-Shape* Ellipse::clone() const { // Изменено на Shape*
+Shape* Ellipse::clone() const {\
     return new Ellipse(*this);
 }
 
