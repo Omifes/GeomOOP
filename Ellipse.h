@@ -19,21 +19,17 @@ private:
     double radiusVert_, radiusHor_;
 
 public:
-    // Конструкторы
-    Ellipse(); // Конструктор по умолчанию
-    Ellipse(double x, double y, double v, double h); // Конструктор с параметрами
+    Ellipse() : pos_(0.0, 0.0), radiusVert_(0.0), radiusHor_(0.0) {}
+    Ellipse(double x, double y, double v, double h) : pos_(x, y), radiusVert_(v), radiusHor_(h) {}
 
-    // Сеттеры
-    void setPos(double x, double y);
-    void setRadVert(double v);
-    void setRadHor(double h);
+    void setPos(double x, double y) { pos_.setX(x); pos_.setY(y); }
+    void setRadVert(double v) { radiusVert_ = v; }
+    void setRadHor(double h) { radiusHor_ = h; }
 
-    // Геттеры
-    Point getPos() const;
-    double getRadVert() const;
-    double getRadHor() const;
+    Point getPos() const { return pos_;  }
+    double getRadVert() const { return radiusVert_; }
+    double getRadHor() const { return radiusHor_; }
 
-    // Переопределенные методы из базового класса Shape
     double getArea() const override;
     FrameRectangle getFrameRectangle() const override;
 
@@ -41,10 +37,10 @@ public:
     void moveToPoint(double k) override;
     void scale(double k) override;
 
-    Shape* clone() const override; // Изменено на Shape*
+    Shape* clone() const override;
     string getName() const override;
 
-    void print(ostream& os) const override { // Реализация метода print
+    void print(ostream& os) const override {
         os << *this;
     }
 };
