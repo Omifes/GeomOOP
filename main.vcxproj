@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CompositeShape.cpp" />
     <ClCompile Include="Ellipse.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CompositeShape.h" />
     <ClInclude Include="FrameRectangle.h" />
     <ClInclude Include="Ellipse.h" />
     <ClInclude Include="Point.h" />

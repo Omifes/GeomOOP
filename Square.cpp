@@ -6,20 +6,23 @@ double Square::getArea() const {
 }
 
 FrameRectangle Square::getFrameRectangle() const {
-    return FrameRectangle(pos_.getX(), pos_.getY(), side_, side_);
+    return FrameRectangle(pos_.getX() + (side_ / 2), pos_.getY() + (side_ / 2), side_, side_);
 }
 
 void Square::moveToPoint(Point pos) {
-    pos_.setX(pos.getX());
-    pos_.setY(pos.getY());
+    pos_.setX(pos.getX() - (side_ / 2));
+    pos_.setY(pos.getY() - (side_ / 2));
 }
 
-void Square::moveToPoint(double k) {
-    pos_.setX(pos_.getX() + k);
-    pos_.setY(pos_.getY() + k);
+void Square::moveToPoint(double x, double y) {
+    pos_.setX(pos_.getX() + x);
+    pos_.setY(pos_.getY() + y);
 }
 
 void Square::scale(double k) {
+    if (k <= 0) {
+        throw invalid_argument("Коэффициент должен быть больше 0");
+    }
     side_ *= k;
 }
 

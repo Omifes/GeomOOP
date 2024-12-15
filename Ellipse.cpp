@@ -15,17 +15,20 @@ void Ellipse::moveToPoint(Point pos) {
     pos_.setY(pos.getY());
 }
 
-void Ellipse::moveToPoint(double k) {
-    pos_.setX(pos_.getX() + k);
-    pos_.setY(pos_.getY() + k);
+void Ellipse::moveToPoint(double x, double y) {
+    pos_.setX(pos_.getX() + x);
+    pos_.setY(pos_.getY() + y);
 }
 
 void Ellipse::scale(double k) {
+    if (k <= 0) {
+        throw invalid_argument("Коэффициент должен быть больше 0");
+    }
     radiusVert_ *= k;
     radiusHor_ *= k;
 }
 
-Shape* Ellipse::clone() const {\
+Shape* Ellipse::clone() const {
     return new Ellipse(*this);
 }
 

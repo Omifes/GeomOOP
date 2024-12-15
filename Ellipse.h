@@ -34,14 +34,14 @@ public:
     FrameRectangle getFrameRectangle() const override;
 
     void moveToPoint(Point pos) override;
-    void moveToPoint(double k) override;
+    void moveToPoint(double x, double y) override;
     void scale(double k) override;
 
     Shape* clone() const override;
     string getName() const override;
 
-    void print(ostream& os) const override {
-        os << *this;
+    void print(ostream& stream) const override {
+        stream << *this;
     }
 };
 

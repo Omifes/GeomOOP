@@ -25,19 +25,20 @@ public:
 
     Point getPos() const { return pos_; }
     double getSide() const { return side_; }
+    Point getCentre() const { return Point(pos_.getX() + side_ / 2, pos_.getX() + side_ / 2); }
 
     double getArea() const override;
     FrameRectangle getFrameRectangle() const override;
 
     void moveToPoint(Point pos) override;
-    void moveToPoint(double k) override;
+    void moveToPoint(double x, double y) override;
     void scale(double k) override;
 
     Shape* clone() const override;
     string getName() const override;
 
-    void print(ostream& os) const override {
-        os << *this;
+    void print(ostream& stream) const override {
+        stream << *this;
     }
 };
 

@@ -15,15 +15,15 @@ public:
     virtual FrameRectangle getFrameRectangle() const = 0;
 
     virtual void moveToPoint(Point pos) = 0;
-    virtual void moveToPoint(double k) = 0;
+    virtual void moveToPoint(double x, double y) = 0;
     virtual void scale(double k) = 0;
 
     virtual Shape* clone() const = 0;
     virtual string getName() const = 0;
 
-    virtual void print(ostream& os) const = 0;
+    virtual void print(ostream& stream) const = 0;
 };
 
-ostream& operator<<(ostream& os, const Shape& shape);
+ostream& operator<<(ostream& stream, const Shape& shape);
 
 #endif // SHAPE_H
